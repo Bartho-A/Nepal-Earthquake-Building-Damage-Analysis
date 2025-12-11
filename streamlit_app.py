@@ -31,7 +31,7 @@ from sklearn.tree import DecisionTreeClassifier
 @st.cache_data
 def load_data():
     df = pd.read_pickle(
-        "/Users/bartholomeowayinbilaa-obe/Desktop/Projects/Applied Data Science Lab/1_Projects/04_earthquaked_amage_in_nepal/data/nepal_buildings_clean.pkl",
+        "nepal_buildings_clean.pkl",
         compression="gzip", 
     )
     X = df.drop(columns="severe_damage")
