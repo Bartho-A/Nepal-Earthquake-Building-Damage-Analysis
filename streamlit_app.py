@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 import streamlit as st
+import pickle
 
 from category_encoders import OneHotEncoder, OrdinalEncoder
 from sklearn.linear_model import LogisticRegression
