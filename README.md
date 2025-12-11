@@ -34,7 +34,7 @@ git clone https://github.com/Bartho_A/Nepal-Earthquake-Building-Damage-Analysis.
 
 ## **Project Structure**
 - streamlit_app.py
-- csv_building_structure.csv
+- nepal_buildings_clean.pkl
 - requirements.txt
 - README.md
 
