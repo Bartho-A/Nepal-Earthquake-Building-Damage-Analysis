@@ -1,0 +1,9 @@
+streamlit
+pickle
+pandas
+numpy
+scikit-learn
+category-encoder
+matplotlib
+seaborn
+plotly
