@@ -1,9 +1,8 @@
 streamlit
-pickle
 pandas
 numpy
 scikit-learn
-category-encoder
+category-encoders
 matplotlib
 seaborn
 plotly
