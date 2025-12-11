@@ -29,14 +29,10 @@ from sklearn.tree import DecisionTreeClassifier
 
 @st.cache_data
 def load_data():
-    df = pd.read_pickle(
-        "nepal_buildings_clean.pkl",
-        compression="gzip", 
-    )
+    df = pd.read_pickle("nepal_buildings_clean.pkl", compression="gzip")
     X = df.drop(columns="severe_damage")
     y = df["severe_damage"]
     return df, X, y
-
 
 
 @st.cache_resource
@@ -178,6 +174,10 @@ with tab_model:
     )
     metrics_df = pd.DataFrame(rows)
 
+    best_idx = metrics_df["Val F1 (Severe)"].idxmax()
+    best_model_name = metrics_df.loc[best_idx, "Model"]
+    st.caption(f"Best model on validation F1 (Severe): **{best_model_name}**")
+
     col1, col2 = st.columns(2)
     with col1:
         st.metric("Baseline Accuracy", f"{acc_baseline:.2f}")
@@ -226,7 +226,8 @@ with tab_model:
     importances = final_model_dt.named_steps["decisiontreeclassifier"].feature_importances_
     feat_imp = pd.Series(importances, index=features)
 
-    feat_imp_sorted = feat_imp.sort_values(ascending=False)
+    feat_imp_nonzero = feat_imp[feat_imp > 0]
+    feat_imp_sorted = feat_imp_nonzero.sort_values(ascending=False)
     feat_imp_top = feat_imp_sorted.head(15)
 
     st.write("Top 15 features driving severe damage:")
